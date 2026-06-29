@@ -1,5 +1,7 @@
 ﻿const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('api', {
-  askOllama: (prompt) => ipcRenderer.invoke('ask-ollama', prompt)
+  askOllama: (payload) => ipcRenderer.invoke('ask-ollama', payload),
+  draftDocument: (description) => ipcRenderer.invoke('draft-document', description),
+  savePDF: (htmlContent) => ipcRenderer.invoke('save-pdf', htmlContent)
 });

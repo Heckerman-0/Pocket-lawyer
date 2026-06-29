@@ -9,7 +9,8 @@ const logoBtn = document.getElementById('logoBtn');
 
 const views = {
   home: document.getElementById('view-home'),
-  chat: document.getElementById('view-chat')
+  chat: document.getElementById('view-chat'),
+  documents: document.getElementById('view-documents')
 };
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -34,12 +35,48 @@ function showView(name) {
 
 navItems.forEach((item) => {
   item.addEventListener('click', () => {
-    if (item.classList.contains('disabled')) {
-      showView('home');
-      return;
-    }
     showView(item.dataset.section);
   });
+});
+
+const docDescription = document.getElementById('docDescription');
+const generateDocBtn = document.getElementById('generateDocBtn');
+const docPreviewWrap = document.getElementById('docPreviewWrap');
+const docPreview = document.getElementById('docPreview');
+const regenerateBtn = document.getElementById('regenerateBtn');
+const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+
+async function generateDocument() {
+  const description = docDescription.value.trim();
+  if (!description) return;
+
+  generateDocBtn.disabled = true;
+  generateDocBtn.textContent = 'Drafting...';
+
+  const result = await window.api.draftDocument(description);
+
+  docPreview.textContent = result;
+  docPreviewWrap.style.display = 'flex';
+  generateDocBtn.disabled = false;
+  generateDocBtn.textContent = 'Generate document';
+}
+
+generateDocBtn.addEventListener('click', generateDocument);
+regenerateBtn.addEventListener('click', generateDocument);
+
+downloadPdfBtn.addEventListener('click', async () => {
+  const text = docPreview.textContent;
+  const html = '<html><head><meta charset="UTF-8"><style>body{font-family:Georgia,serif;font-size:13px;line-height:1.7;padding:50px;white-space:pre-wrap;color:#1a1a1a;}</style></head><body>' + text.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</body></html>';
+
+  downloadPdfBtn.disabled = true;
+  downloadPdfBtn.textContent = 'Saving...';
+
+  const result = await window.api.savePDF(html);
+
+  downloadPdfBtn.disabled = false;
+  downloadPdfBtn.textContent = 'Download as PDF';
+
+  if (!result.success) return;
 });
 
 startChatBtn.addEventListener('click', () => showView('chat'));
@@ -56,6 +93,28 @@ function addMessage(html, sender) {
 
 let isMidChat = false;
 let lastResponseAt = 0;
+let currentMode = 'general';
+
+const modeBtns = document.querySelectorAll('.mode-btn');
+const chatTitle = document.getElementById('chatTitle');
+const chatSubtitle = document.getElementById('chatSubtitle');
+
+const MODE_LABELS = {
+  general: { title: 'Legal Q&A', subtitle: 'Ask a question in plain language. Answers are generated locally and are not legal advice.', placeholder: 'Ask a legal question...' },
+  security: { title: 'Security Research Legal Q&A', subtitle: 'Ask about the legal side of authorized testing, bug bounty programs, and responsible disclosure. Not a substitute for a lawyer.', placeholder: 'Ask about bug bounty / authorized testing law...' }
+};
+
+modeBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    currentMode = btn.dataset.mode;
+    modeBtns.forEach((b) => b.classList.toggle('active', b === btn));
+    const labels = MODE_LABELS[currentMode];
+    chatTitle.textContent = labels.title;
+    chatSubtitle.textContent = labels.subtitle;
+    userInput.placeholder = labels.placeholder;
+    messagesDiv.innerHTML = '';
+  });
+});
 
 async function sendMessage() {
   const text = userInput.value.trim();
@@ -68,7 +127,7 @@ async function sendMessage() {
 
   const thinkingDiv = addMessage('<div class="typing-dots"><span></span><span></span><span></span></div>', 'bot');
 
-  const reply = await window.api.askOllama(text);
+  const reply = await window.api.askOllama({ prompt: text, mode: currentMode });
   thinkingDiv.textContent = reply;
 
   sendBtn.disabled = false;
@@ -131,3 +190,5 @@ function startDonateTimer() {
     openDonateModal();
   }, 6 * 60 * 1000);
 }
+
+

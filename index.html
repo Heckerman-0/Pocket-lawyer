@@ -27,9 +27,8 @@
         <button class="nav-item" data-section="chat">
           <span class="nav-label">Chat</span>
         </button>
-        <button class="nav-item disabled" data-section="documents">
+        <button class="nav-item" data-section="documents">
           <span class="nav-label">Documents</span>
-          <span class="nav-badge">Coming soon</span>
         </button>
       </div>
       <div id="sidebarDonate">
@@ -59,10 +58,36 @@
         </div>
       </section>
 
+      <section id="view-documents" class="view" style="display:none;">
+        <header id="content-header">
+          <h1>Documents</h1>
+          <p class="subtitle">Describe the document you need. The AI will draft it locally, then you can download it as a PDF.</p>
+        </header>
+
+        <div id="docWorkspace">
+          <div id="docInputArea">
+            <textarea id="docDescription" placeholder="e.g. Draft an NDA between two parties for a software consulting project, mutual confidentiality, 2 year term, governed by California law."></textarea>
+            <button id="generateDocBtn">Generate document</button>
+          </div>
+
+          <div id="docPreviewWrap" style="display:none;">
+            <div id="docPreview"></div>
+            <div id="docActions">
+              <button id="regenerateBtn">Regenerate</button>
+              <button id="downloadPdfBtn">Download as PDF</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="view-chat" class="view" style="display:none;">
         <header id="content-header">
-          <h1>Legal Q&amp;A</h1>
-          <p class="subtitle">Ask a question in plain language. Answers are generated locally and are not legal advice.</p>
+          <h1 id="chatTitle">Legal Q&amp;A</h1>
+          <p class="subtitle" id="chatSubtitle">Ask a question in plain language. Answers are generated locally and are not legal advice.</p>
+          <div id="modeToggle">
+            <button class="mode-btn active" data-mode="general">General Legal</button>
+            <button class="mode-btn" data-mode="security">Security Research</button>
+          </div>
         </header>
 
         <div id="messages"></div>
@@ -93,3 +118,5 @@
   <script src="chat.js"></script>
 </body>
 </html>
+
+

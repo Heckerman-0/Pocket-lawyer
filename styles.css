@@ -489,3 +489,140 @@ body {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* Mode toggle */
+#modeToggle {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mode-btn {
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid #d8d1c2;
+  background: #fffdf9;
+  color: #6b6458;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.mode-btn:hover {
+  border-color: #c9a227;
+}
+
+.mode-btn.active {
+  background: #0f1f3d;
+  border-color: #0f1f3d;
+  color: #f7f5f0;
+}
+
+/* Documents view */
+#docWorkspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  overflow-y: auto;
+  gap: 20px;
+}
+
+#docInputArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#docDescription {
+  min-height: 110px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #d8d1c2;
+  background: #fffdf9;
+  color: #1f2430;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+#docDescription:focus {
+  outline: none;
+  border-color: #c9a227;
+}
+
+#generateDocBtn {
+  align-self: flex-start;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  background: #0f1f3d;
+  color: #f7f5f0;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#generateDocBtn:hover:not(:disabled) {
+  background: #16284a;
+}
+
+#generateDocBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#docPreviewWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#docPreview {
+  background: #fffdf9;
+  border: 1px solid #e3ddd0;
+  border-radius: 8px;
+  padding: 36px 40px;
+  font-family: "Lora", Georgia, serif;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #1f2430;
+  white-space: pre-wrap;
+  max-width: 680px;
+}
+
+#docActions {
+  display: flex;
+  gap: 10px;
+}
+
+#regenerateBtn, #downloadPdfBtn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#regenerateBtn {
+  background: #fff;
+  border: 1px solid #d8d1c2;
+  color: #0f1f3d;
+}
+
+#regenerateBtn:hover {
+  border-color: #c9a227;
+}
+
+#downloadPdfBtn {
+  background: #c9a227;
+  border: none;
+  color: #0f1f3d;
+}
+
+#downloadPdfBtn:hover {
+  background: #d9b23a;
+}
