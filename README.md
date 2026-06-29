@@ -11,7 +11,7 @@
 | Feature | Status |
 |---|---|
 | 💬 Legal Q&A Chatbot | ✅ Done |
-| 📄 Document Generator | ⏳ Coming soon |
+| 📄 Document Generator | ✅ Done (AI-drafted) |
 | 🔍 Contract Reviewer | ⏳ Coming soon |
 
 ---
@@ -46,6 +46,12 @@ npm start
 Ollama must be running in the background (it usually starts automatically after installation).
 
 ---
+
+## 📄 Document Generator
+
+Go to the **Documents** section, describe the document you need in plain language (e.g. "Draft an NDA between two parties for a software project, mutual confidentiality, 2 year term"), and the local AI model will draft a full document. You can regenerate it or download it as a PDF using your system's native save dialog.
+
+Template-based generation (NDA, lease, etc. with fillable forms) is still on the roadmap.
 
 ## ⚙️ How It Works
 
@@ -111,3 +117,5 @@ bc1qw64f7rhxmq2wf3fe6tq4kqmsluftjdgapjsgqv
 ```
 
 The app itself also has a donate option in the sidebar and on the home screen, with a QR code for easy scanning.
+
+
