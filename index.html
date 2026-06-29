@@ -32,6 +32,12 @@
           <span class="nav-badge">Coming soon</span>
         </button>
       </div>
+      <div id="sidebarDonate">
+        <button id="sidebarDonateBtn">
+          <span class="donate-icon">&#8383;</span>
+          <span>Donate Bitcoin</span>
+        </button>
+      </div>
     </nav>
 
     <main id="content">
@@ -41,6 +47,15 @@
           <h1 class="home-title">Pocket Lawyer</h1>
           <p class="home-tagline">Private legal Q&amp;A, powered entirely by a local AI model on your machine.</p>
           <button id="startChatBtn">Start chatting</button>
+
+          <div id="homeDonateCard">
+            <p class="donate-card-title">Support this project</p>
+            <p class="donate-card-text">Pocket Lawyer is free and runs entirely on your machine. If it's useful to you, consider donating Bitcoin to help keep it going.</p>
+            <button id="homeDonateBtn">
+              <span class="donate-icon">&#8383;</span>
+              <span>Donate Bitcoin</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -59,6 +74,22 @@
       </section>
     </main>
   </div>
+
+  <div id="donateModalOverlay" style="display:none;">
+    <div id="donateModal">
+      <button id="donateModalClose" aria-label="Close">&times;</button>
+      <span class="modal-icon">&#8383;</span>
+      <h2>Support Pocket Lawyer</h2>
+      <p class="modal-text">This app is free and runs entirely offline on your machine. If you find it useful, a small Bitcoin donation helps keep it going.</p>
+      <div id="qrcode"></div>
+      <p class="btc-address" id="btcAddress">bc1qw64f7rhxmq2wf3fe6tq4kqmsluftjdgapjsgqv</p>
+      <button id="copyAddressBtn">Copy address</button>
+      <p class="modal-thanks">Thank you for your support. It genuinely makes a difference.</p>
+      <button id="maybeLaterBtn">Maybe later</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="chat.js"></script>
 </body>
 </html>

@@ -16,6 +16,9 @@ window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     splash.style.display = 'none';
     app.style.display = 'flex';
+    renderQRCode();
+    openDonateModal();
+    startDonateTimer();
   }, 1700);
 });
 
@@ -51,10 +54,14 @@ function addMessage(html, sender) {
   return div;
 }
 
+let isMidChat = false;
+let lastResponseAt = 0;
+
 async function sendMessage() {
   const text = userInput.value.trim();
   if (!text) return;
 
+  isMidChat = true;
   addMessage(text, 'user');
   userInput.value = '';
   sendBtn.disabled = true;
@@ -66,9 +73,61 @@ async function sendMessage() {
 
   sendBtn.disabled = false;
   userInput.focus();
+  lastResponseAt = Date.now();
+  isMidChat = false;
 }
 
 sendBtn.addEventListener('click', sendMessage);
 userInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') sendMessage();
 });
+userInput.addEventListener('input', () => {
+  isMidChat = userInput.value.trim().length > 0;
+});
+
+/* Donate modal */
+const donateModalOverlay = document.getElementById('donateModalOverlay');
+const donateModalClose = document.getElementById('donateModalClose');
+const maybeLaterBtn = document.getElementById('maybeLaterBtn');
+const sidebarDonateBtn = document.getElementById('sidebarDonateBtn');
+const homeDonateBtn = document.getElementById('homeDonateBtn');
+const copyAddressBtn = document.getElementById('copyAddressBtn');
+const btcAddress = document.getElementById('btcAddress').textContent.trim();
+
+function openDonateModal() {
+  donateModalOverlay.style.display = 'flex';
+}
+
+function closeDonateModal() {
+  donateModalOverlay.style.display = 'none';
+}
+
+donateModalClose.addEventListener('click', closeDonateModal);
+maybeLaterBtn.addEventListener('click', closeDonateModal);
+sidebarDonateBtn.addEventListener('click', openDonateModal);
+homeDonateBtn.addEventListener('click', openDonateModal);
+
+copyAddressBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(btcAddress);
+  copyAddressBtn.textContent = 'Copied!';
+  setTimeout(() => { copyAddressBtn.textContent = 'Copy address'; }, 1500);
+});
+
+function renderQRCode() {
+  new QRCode(document.getElementById('qrcode'), {
+    text: 'bitcoin:' + btcAddress,
+    width: 160,
+    height: 160,
+    colorDark: '#0f1f3d',
+    colorLight: '#fffdf9'
+  });
+}
+
+function startDonateTimer() {
+  setInterval(() => {
+    const recentlyResponded = Date.now() - lastResponseAt < 10000;
+    if (donateModalOverlay.style.display === 'flex') return;
+    if (isMidChat || recentlyResponded) return;
+    openDonateModal();
+  }, 6 * 60 * 1000);
+}

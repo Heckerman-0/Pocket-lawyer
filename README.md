@@ -99,3 +99,15 @@ This app provides general legal information for **educational purposes only**. I
 ## 📜 License
 
 ISC
+
+---
+
+## ₿ Support this project
+
+Pocket Lawyer is free and runs entirely offline on your machine. If you find it useful, consider donating Bitcoin to help keep it going:
+
+```
+bc1qw64f7rhxmq2wf3fe6tq4kqmsluftjdgapjsgqv
+```
+
+The app itself also has a donate option in the sidebar and on the home screen, with a QR code for easy scanning.
