@@ -626,3 +626,397 @@ body {
 #downloadPdfBtn:hover {
   background: #d9b23a;
 }
+
+/* Documents sub-views */
+.doc-sub-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  color: #6b6458;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.backBtn:hover {
+  color: #c9a227;
+}
+
+/* Choice cards */
+#docChoiceCards {
+  display: flex;
+  gap: 20px;
+  padding: 8px 32px 32px;
+}
+
+.doc-choice-card {
+  flex: 1;
+  max-width: 280px;
+  background: #fffdf9;
+  border: 1px solid #e3ddd0;
+  border-radius: 10px;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.doc-choice-card:hover {
+  border-color: #c9a227;
+  box-shadow: 0 2px 10px rgba(15, 31, 61, 0.06);
+}
+
+.doc-choice-icon {
+  font-size: 24px;
+  color: #c9a227;
+}
+
+.doc-choice-title {
+  font-family: "Lora", Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f1f3d;
+}
+
+.doc-choice-text {
+  font-size: 12.5px;
+  color: #6b6458;
+  line-height: 1.5;
+}
+
+/* Template picker cards */
+#templateCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 8px 32px 32px;
+}
+
+.template-card {
+  width: 220px;
+  background: #fffdf9;
+  border: 1px solid #e3ddd0;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.template-card:hover {
+  border-color: #c9a227;
+}
+
+.template-card-title {
+  font-family: "Lora", Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f1f3d;
+}
+
+.template-card-text {
+  font-size: 12px;
+  color: #6b6458;
+  line-height: 1.45;
+}
+
+/* Template form */
+#templateFields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 480px;
+  margin-bottom: 18px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field-group label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #0f1f3d;
+}
+
+.field-group input, .field-group textarea {
+  padding: 10px 12px;
+  border-radius: 7px;
+  border: 1px solid #d8d1c2;
+  background: #fffdf9;
+  color: #1f2430;
+  font-size: 13.5px;
+  font-family: inherit;
+}
+
+.field-group input:focus, .field-group textarea:focus {
+  outline: none;
+  border-color: #c9a227;
+}
+
+#generateTemplateBtn {
+  align-self: flex-start;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  background: #0f1f3d;
+  color: #f7f5f0;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-bottom: 20px;
+}
+
+#generateTemplateBtn:hover:not(:disabled) {
+  background: #16284a;
+}
+
+#generateTemplateBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Shared preview/actions (renamed from id to class) */
+.docPreviewWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.docPreview {
+  background: #fffdf9;
+  border: 1px solid #e3ddd0;
+  border-radius: 8px;
+  padding: 36px 40px;
+  font-family: "Lora", Georgia, serif;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #1f2430;
+  white-space: pre-wrap;
+  max-width: 680px;
+}
+
+.docActions {
+  display: flex;
+  gap: 10px;
+}
+
+.docActions button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#regenerateBtn {
+  background: #fff;
+  border: 1px solid #d8d1c2;
+  color: #0f1f3d;
+}
+
+#regenerateBtn:hover {
+  border-color: #c9a227;
+}
+
+#aiDownloadPdfBtn, #templateDownloadPdfBtn {
+  background: #c9a227;
+  border: none;
+  color: #0f1f3d;
+}
+
+#aiDownloadPdfBtn:hover, #templateDownloadPdfBtn:hover {
+  background: #d9b23a;
+}
+
+/* Icon overrides - replace emoji with SVG-based icon system */
+.icon-svg {
+  display: inline-block;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+
+/* Filing-index style choice/template cards (replaces generic icon-card pattern) */
+#docChoiceCards {
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 32px 32px;
+  max-width: 520px;
+}
+
+.doc-choice-card {
+  max-width: none;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 22px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #e3ddd0;
+  background: transparent;
+}
+
+.doc-choice-card:first-child {
+  border-top: 1px solid #e3ddd0;
+}
+
+.doc-choice-card:hover {
+  background: #fffdf9;
+  box-shadow: none;
+}
+
+.doc-choice-index {
+  font-family: "Lora", Georgia, serif;
+  font-size: 13px;
+  color: #c9a227;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.doc-choice-icon {
+  color: #0f1f3d;
+  flex-shrink: 0;
+}
+
+#templateCards {
+  flex-direction: column;
+  gap: 0;
+  max-width: 520px;
+  padding: 8px 32px 32px;
+}
+
+.template-card {
+  width: auto;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 16px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #e3ddd0;
+  padding: 16px 18px;
+}
+
+.template-card-title, .template-card-text {
+  display: block;
+}
+
+.template-card:first-child {
+  border-top: 1px solid #e3ddd0;
+}
+
+.template-card:hover {
+  background: #fffdf9;
+}
+
+.template-card-index {
+  font-family: "Lora", Georgia, serif;
+  font-size: 12px;
+  color: #c9a227;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+
+/* Summarize view */
+#summarizeUploadArea {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+#pickFileBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #d8d1c2;
+  background: #fffdf9;
+  color: #0f1f3d;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#pickFileBtn:hover {
+  border-color: #c9a227;
+}
+
+#selectedFileName {
+  font-size: 13px;
+  color: #6b6458;
+}
+
+#summarizeBtn {
+  align-self: flex-start;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  background: #0f1f3d;
+  color: #f7f5f0;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-bottom: 20px;
+}
+
+#summarizeBtn:hover:not(:disabled) {
+  background: #16284a;
+}
+
+#summarizeBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Markdown rendering inside doc preview */
+.docPreview h1, .docPreview h2, .docPreview h3 {
+  font-family: "Lora", Georgia, serif;
+  color: #0f1f3d;
+  margin: 16px 0 8px;
+}
+
+.docPreview h1:first-child, .docPreview h2:first-child, .docPreview h3:first-child {
+  margin-top: 0;
+}
+
+.docPreview strong {
+  color: #0f1f3d;
+}
+
+.docPreview ul, .docPreview ol {
+  margin: 8px 0;
+  padding-left: 22px;
+}
+
+.docPreview li {
+  margin-bottom: 4px;
+}
+
+.docPreview p {
+  margin: 0 0 10px;
+}

@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "pocket-lawyer",
   "version": "1.0.0",
   "description": "",
@@ -12,5 +12,9 @@
   "type": "commonjs",
   "devDependencies": {
     "electron": "^42.5.1"
+  },
+  "dependencies": {
+    "mammoth": "^1.12.0",
+    "pdf-parse": "^2.4.5"
   }
 }
