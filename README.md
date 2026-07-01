@@ -53,6 +53,14 @@ Go to the **Documents** section, describe the document you need in plain languag
 
 Template-based generation (NDA, lease, etc. with fillable forms) is still on the roadmap.
 
+## 📑 Document Summarizer
+
+Go to the **Summarize** section, choose a PDF, DOCX, or TXT file, and the local AI model will generate a plain-language summary covering what the document is, its key terms/obligations, and anything worth paying attention to.
+
+## 🛡️ Security Research Mode
+
+Within the **Chat** section, toggle to **Security Research** mode for legal Q&A scoped to authorized security testing and bug bounty work — topics like CFAA/computer fraud law, safe harbor language, responsible disclosure, and reading program scope. This mode only discusses authorized, permission-based testing.
+
 ## ⚙️ How It Works
 
 - The Electron **main process** (`main.js`) sends prompts to Ollama's local API at `http://localhost:11434/api/generate`
@@ -117,5 +125,8 @@ bc1qw64f7rhxmq2wf3fe6tq4kqmsluftjdgapjsgqv
 ```
 
 The app itself also has a donate option in the sidebar and on the home screen, with a QR code for easy scanning.
+
+
+
 
 
